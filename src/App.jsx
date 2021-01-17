@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import ColorfulMessage from "./components/ColorfulMessage";
 
 const App = () => {
+  // 分割代入
+  const [num, setNum] = useState(0);
+  const [faceShowFlag, setFaceShowFlag] = useState(true);
   const onClickButton = () => alert();
+  const onClickCountup = () => {
+    setNum(num + 1);
+  };
+  const onClickSwitchShowFlag = () => {
+    setFaceShowFlag(!faceShowFlag);
+  };
 
   return (
     // </React.Fragment>短縮して書ける
@@ -13,6 +22,12 @@ const App = () => {
       <ColorfulMessage color="blue">お元気ですか？</ColorfulMessage>
       <ColorfulMessage color="pink">元気です！</ColorfulMessage>
       <button onClick={onClickButton}>ボタン</button>
+      <button onClick={onClickCountup}>カウントアップ</button>
+      <p>{num}</p>
+      <br />
+      <button onClick={onClickSwitchShowFlag}>On/Off</button>
+      {/* 左側がtureの時右側を実行 */}
+      {faceShowFlag && <p>(^^)</p>}
     </>
   );
 };
