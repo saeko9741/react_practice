@@ -5,6 +5,7 @@ const App = () => {
   // 分割代入
   const [num, setNum] = useState(0);
   const [faceShowFlag, setFaceShowFlag] = useState(true);
+
   const onClickButton = () => alert();
   const onClickCountup = () => {
     setNum(num + 1);
@@ -12,6 +13,20 @@ const App = () => {
   const onClickSwitchShowFlag = () => {
     setFaceShowFlag(!faceShowFlag);
   };
+
+  // Too many re-renders.
+  // if (num % 3 === 0) {
+  //   setFaceShowFlag(true);
+  // } else {
+  //   setFaceShowFlag(false);
+  // }
+
+  if (num % 3 === 0) {
+    // faceshowFlagがfalseの時
+    faceShowFlag || setFaceShowFlag(true);
+  } else {
+    faceShowFlag && setFaceShowFlag(false);
+  }
 
   return (
     // </React.Fragment>短縮して書ける
