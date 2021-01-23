@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint react-hooks/exhaustive-deps: off */
+import React, { useEffect, useState } from "react";
 import ColorfulMessage from "./components/ColorfulMessage";
 
 const App = () => {
@@ -21,14 +22,16 @@ const App = () => {
   //   setFaceShowFlag(false);
   // }
 
-  if (num > 0) {
-    if (num % 3 === 0) {
-      // faceshowFlagがfalseの時
-      faceShowFlag || setFaceShowFlag(true);
-    } else {
-      faceShowFlag && setFaceShowFlag(false);
+  useEffect(() => {
+    if (num > 0) {
+      if (num % 3 === 0) {
+        // faceshowFlagがfalseの時
+        faceShowFlag || setFaceShowFlag(true);
+      } else {
+        faceShowFlag && setFaceShowFlag(false);
+      }
     }
-  }
+  }, [num]);
 
   return (
     // </React.Fragment>短縮して書ける
