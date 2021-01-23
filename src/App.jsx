@@ -4,7 +4,7 @@ import ColorfulMessage from "./components/ColorfulMessage";
 const App = () => {
   // 分割代入
   const [num, setNum] = useState(0);
-  const [faceShowFlag, setFaceShowFlag] = useState(true);
+  const [faceShowFlag, setFaceShowFlag] = useState(false);
 
   const onClickButton = () => alert();
   const onClickCountup = () => {
@@ -21,11 +21,13 @@ const App = () => {
   //   setFaceShowFlag(false);
   // }
 
-  if (num % 3 === 0) {
-    // faceshowFlagがfalseの時
-    faceShowFlag || setFaceShowFlag(true);
-  } else {
-    faceShowFlag && setFaceShowFlag(false);
+  if (num > 0) {
+    if (num % 3 === 0) {
+      // faceshowFlagがfalseの時
+      faceShowFlag || setFaceShowFlag(true);
+    } else {
+      faceShowFlag && setFaceShowFlag(false);
+    }
   }
 
   return (
